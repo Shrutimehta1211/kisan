@@ -161,3 +161,28 @@ export const logout = async (
     }
   }
 };
+
+export const predictDisease = async (files) => {
+  try {
+    const formData = new FormData();
+    formData.append('files', files[0]);
+    const options = {
+      method: "POST",
+      url: `https://agentcrop.azurewebsites.net/api/predict`,
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+      data: formData,
+    };
+    const res = await axios(options);
+    return res.data
+  } catch (e) {
+    console.log(e);
+    if (e?.response?.data) {
+      return e.response.data;
+    }
+    return {
+      error: "Something Went Wrong",
+    };
+  }
+}
