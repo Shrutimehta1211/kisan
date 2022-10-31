@@ -64,13 +64,36 @@ router.delete('/users/me', auth, async (req, res) => {
 
 router.post("/predict_crop", async (req, res) => {
     try {
-        const options = {
+        // var options = {
+        //     "method": "GET",
+        //     "url": `https://api.ambeedata.com/weather/latest/by-lat-lng?lat=${req.body.lat}&lng=${req.body.long}`,
+        //     "headers": {
+        //         "x-api-key": process.env.AMBEE_API_KEY,
+        //         "Content-type": "application/json"
+        //     }
+        // };
+        // var weatherRes = await axios(options);
+        // console.log(weatherRes.data.data);
+        // const weatherData = weatherRes.data.data.data
+        
+        const data = {
+            temperature: Math.abs(req.body.long/2),
+            humidity: Math.abs(req.body.lat),
+            rainfall: Math.abs(req.body.lat)*100,
+            water: Math.abs(req.body.long)*10,
+            phosphorus: Math.abs(req.body.lat),
+            nitrogen: Math.abs(req.body.long),
+            potassium: Math.abs(req.body.long),
+            ph: 6
+        }
+        console.log(data)
+        var options = {
             method: "POST",
             url: `http://localhost:5000/predict`,
             headers: {
                 "Content-Type": "application/json",
             },
-            data: req.body,
+            data,
         };
         const response = await axios(options);
 

@@ -11,6 +11,7 @@ const PredictDisease = () => {
   const [loading, setLoading] = useState(false);
 
   const [predction, setPrediction] = useState();
+  const [position, setPosition] = useState();
 
   const handleChange = (e) => {
     setImages(e.target.files)

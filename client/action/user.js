@@ -72,7 +72,7 @@ export const userLogin = async (
 };
 
 export const predictCrop = async (
-  values,
+  values
 ) => {
   const options = {
     method: "POST",
