@@ -86,7 +86,6 @@ router.post("/predict_crop", async (req, res) => {
             potassium: Math.abs(req.body.long),
             ph: 6
         }
-        console.log(data)
         var options = {
             method: "POST",
             url: `http://localhost:5000/predict`,
