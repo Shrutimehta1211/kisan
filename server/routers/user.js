@@ -77,14 +77,14 @@ router.post("/predict_crop", async (req, res) => {
         // const weatherData = weatherRes.data.data.data
         
         const data = {
-            temperature: Math.abs(req.body.long/2),
-            humidity: Math.abs(req.body.lat),
-            rainfall: Math.abs(req.body.lat)*100,
-            water: Math.abs(req.body.long)*10,
-            phosphorus: Math.abs(req.body.lat),
+            temperature: Math.abs(req.body.lat),
+            humidity: Math.abs(req.body.lat*10),
+            rainfall: Math.abs(req.body.lat)*20,
+            water: Math.abs(req.body.long)*100,
+            phosphorus: Math.abs(req.body.lat)*2,
             nitrogen: Math.abs(req.body.long),
-            potassium: Math.abs(req.body.long),
-            ph: 6
+            potassium: Math.abs(req.body.long)/2,
+            ph: 7
         }
         var options = {
             method: "POST",
